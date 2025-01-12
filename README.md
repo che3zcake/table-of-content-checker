@@ -3,10 +3,10 @@ A script to check for Table of Contents in PDFs.
 
 ## How to use this:
 write this is terminal to run:
-python toc_checker.py url.txt 
+-- python toc_checker.py url.txt 
 
 if you want to add your own keywords to check:
-python toc_checker.py url.txt --keywords "Resumen" "Table of Content"
+-- python toc_checker.py url.txt --keywords "Resumen" "Table of Content"
 
 ## Note:
 - Make sure that url.txt file is in the same folder as toc_checker.py python script
