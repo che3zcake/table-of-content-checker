@@ -141,8 +141,8 @@ if __name__ == "__main__":
         try:
             pdf_content = fetch_pdf(url)
             if pdf_content and toc_checker.is_toc_present(pdf_content):
-                print(f"yes")
+                print(f"Yes")
             else:
-                print(f"no")
+                print(f"No")
         except ValueError as e:
             print(e)
