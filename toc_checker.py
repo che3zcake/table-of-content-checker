@@ -23,7 +23,7 @@ def detect_toc_pattern(text):
         \b[IVXLCDM]+\.\s+\w+|         # Roman numerals (I. Introduction, II. Methodology)
         \b\d+:\s+\w+|                 # Numbered lists with colons (1: Introduction)
         \b[A-Za-z]:\s+\w+             # Lettered lists with colons (A: Background)
-        ^[\w\sÀ-ÿ]+(?:\.{3,}\s*|\s+)\d*$  # Text entries with dots or spaces before numbers          
+        ^[\w\sÀ-ÿ]+(?:\.{2,}|\s{2,})\d+$|  # Text followed by dots or spaces, ending with a number     
     '''
     return bool(re.search(pattern, text, re.VERBOSE))
 
@@ -42,7 +42,7 @@ class TOCChecker:
             "Indice",
             "ÍNDICE",
             "Índice",
-            "PUNTOS CLAVE"
+            "PUNTOS CLAVE",
         ]
 
     def add_keywords(self, new_keywords):
