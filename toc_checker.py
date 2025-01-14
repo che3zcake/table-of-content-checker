@@ -33,6 +33,7 @@ class TOCChecker:
         self.keywords = [
             "Agenda",
             "Tabla de contenido",
+            "Tabla de Contenidos",
             "Contenido",
             "CONTENIDO",
             "En esta noticia",
