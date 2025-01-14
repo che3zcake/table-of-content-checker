@@ -14,6 +14,7 @@ def detect_toc_pattern(text):
         bool: True if a TOC-like pattern is found, False otherwise
     """
     pattern = r'''
+        ^\d+\s+[\w\sÀ-ÿ]+$|           # Numbered lists (1  Introduction)
         \b\d+\.\s+\w+|                # Numbered lists (1. Introduction)
         \b[A-Z]\.\s+\w+|              # Uppercase lettered lists (A. Background)
         \b[a-z]\.\s+\w+|              # Lowercase lettered lists (a. Introduction)
@@ -43,6 +44,7 @@ class TOCChecker:
             "ÍNDICE",
             "Índice",
             "PUNTOS CLAVE",
+            "Capítulo"
         ]
 
     def add_keywords(self, new_keywords):
