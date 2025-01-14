@@ -44,7 +44,9 @@ class TOCChecker:
             "ÍNDICE",
             "Índice",
             "PUNTOS CLAVE",
-            "Capítulo"
+            "Capítulo",
+            "índice",
+            "SUMARIO"
         ]
 
     def add_keywords(self, new_keywords):
