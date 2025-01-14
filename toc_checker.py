@@ -38,7 +38,8 @@ class TOCChecker:
             "En esta noticia",
             "INDICE",
             "Indice",
-            "ÍNDICE"
+            "ÍNDICE",
+            "Índice"
         ]
 
     def add_keywords(self, new_keywords):
