@@ -1,0 +1,67 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and debug files
+*.log
+*.out
+*.err
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Test coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Pytest and other testing outputs
+.cache/
+.tox/
+.pytest_cache/
+
+# Package build files
+*.egg
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# MyPy type checking output
+.mypy_cache/
+
+# Pylint reports
+.pylint.d/
+
+# Pyre type checker
+.pyre/
+
+# Bandit security scanner
+.bandit/
+
+# Profiling data
+.prof
+
+url.txt
