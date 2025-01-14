@@ -23,6 +23,7 @@ def detect_toc_pattern(text):
         \b[IVXLCDM]+\.\s+\w+|         # Roman numerals (I. Introduction, II. Methodology)
         \b\d+:\s+\w+|                 # Numbered lists with colons (1: Introduction)
         \b[A-Za-z]:\s+\w+             # Lettered lists with colons (A: Background)
+        ^[\w\sÀ-ÿ]+(?:\.{3,}\s*|\s+)\d*$  # Text entries with dots or spaces before numbers          
     '''
     return bool(re.search(pattern, text, re.VERBOSE))
 
