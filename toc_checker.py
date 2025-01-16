@@ -98,10 +98,9 @@ def fetch_pdf(url):
         if response.status_code == 200:
             return response.content
         else:
-            raise ValueError(f" ")
+            return False
     except requests.exceptions.RequestException as e:
-        print(f" ")
-        return None
+        return False
 
 
 def read_urls_from_file(file_path):
@@ -149,9 +148,12 @@ if __name__ == "__main__":
     for url in urls:
         try:
             pdf_content = fetch_pdf(url)
-            if pdf_content and toc_checker.is_toc_present(pdf_content):
-                print(f"Yes")
+            if pdf_content:
+                if toc_checker.is_toc_present(pdf_content):
+                    print(f"Yes")
+                else:
+                    print(f"No")
             else:
-                print(f"No")
+                print(" ")
         except ValueError as e:
             print(e)
