@@ -73,7 +73,7 @@ class TOCChecker:
                 #     return True
 
                 if len(doc) > 10:
-                    for page_num in range(min(5, len(doc))):
+                    for page_num in range(min(7, len(doc))):
                         page = doc.load_page(page_num)
                         text = page.get_text("text")
                         if any(keyword in text for keyword in self.keywords):
