@@ -44,7 +44,7 @@ class TOCChecker:
             "ÍNDICE",
             "Índice",
             "PUNTOS CLAVE",
-            "Capítulo",
+            # "Capítulo",
             "índice",
             "SUMARIO"
         ]
