@@ -14,17 +14,18 @@ def detect_toc_pattern(text):
         bool: True if a TOC-like pattern is found, False otherwise
     """
     pattern = r'''
-        ^\d+\s+[\w\sÀ-ÿ]+$|           # Numbered lists (1  Introduction)
-        \b\d+\.\s+\w+|                # Numbered lists (1. Introduction)
-        \b[A-Z]\.\s+\w+|              # Uppercase lettered lists (A. Background)
-        \b[a-z]\.\s+\w+|              # Lowercase lettered lists (a. Introduction)
-        \(\d+\)\s+\w+|                # Parenthesized numbers ((1) Introduction)
-        \([A-Za-z]\)\s+\w+|           # Parenthesized letters ((A) Background)
-        [•\-]\s+\w+|                  # Bullet points (• Introduction, - Methodology)
-        \b[IVXLCDM]+\.\s+\w+|         # Roman numerals (I. Introduction, II. Methodology)
-        \b\d+:\s+\w+|                 # Numbered lists with colons (1: Introduction)
-        \b[A-Za-z]:\s+\w+             # Lettered lists with colons (A: Background)
-        ^[\w\sÀ-ÿ]+(?:\.{2,}|\s{2,})\d+$|  # Text followed by dots or spaces, ending with a number     
+            (^\d+\s+[\w\sÀ-ÿ]+$|           # Numbered lists (1  Introduction)
+            \b\d+\.\s+\w+|                # Numbered lists (1. Introduction)
+            \b[A-Z]\.\s+\w+|              # Uppercase lettered lists (A. Background)
+            \b[a-z]\.\s+\w+|              # Lowercase lettered lists (a. Introduction)
+            \(\d+\)\s+\w+|                # Parenthesized numbers ((1) Introduction)
+            \([A-Za-z]\)\s+\w+|           # Parenthesized letters ((A) Background)
+            [•\-]\s+\w+|                  # Bullet points (• Introduction, - Methodology)
+            \b[IVXLCDM]+\.\s+\w+|         # Roman numerals (I. Introduction, II. Methodology)
+            \b\d+:\s+\w+|                 # Numbered lists with colons (1: Introduction)
+            \b[A-Za-z]:\s+\w+)            # Lettered lists with colons (A: Background)
+            |
+            ^[\w\sÀ-ÿ]+(?:\s{5,}|\.{2,})\d+$  # Text followed by 5+ spaces or 2+ dots, ending with a number
     '''
     return bool(re.search(pattern, text, re.VERBOSE))
 
@@ -127,7 +128,7 @@ class TOCChecker:
                         page = doc.load_page(page_num)
                         text = page.get_text("text")
                         if any(keyword in text for keyword in self.keywords):
-                            if self.extract_headings(page, self.keywords):
+                            if self.extract_headings(page, self.keywords) or detect_toc_pattern(text):
                                 return True
             return False
         except fitz.FileDataError:
