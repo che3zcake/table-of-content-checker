@@ -124,7 +124,7 @@ class TOCChecker:
         try:
             with fitz.open(stream=pdf_content, filetype="pdf") as doc:
                 if len(doc) > 10:
-                    for page_num in range(min(7, len(doc))):
+                    for page_num in range(min(10, len(doc))):
                         page = doc.load_page(page_num)
                         text = page.get_text("text")
                         if any(keyword in text for keyword in self.keywords):
